@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
 #include "palindrome.h"
 
 char *str_reverse(char const *str) {
@@ -14,7 +13,7 @@ char *str_reverse(char const *str) {
     result[i] = str[len-i-1];
   }
   result[len] = '\0';
-  
+
   return result;
 }
 
@@ -24,6 +23,7 @@ char *palindrome(char const *str) {
   bool result = true;
   char *answer;
 
+  //This needs to get freed!
   rev = str_reverse(str);
   i = 0;
   while (result && str[i]) {
@@ -46,5 +46,8 @@ char *palindrome(char const *str) {
     answer[2] = '\0';
   }
 
+  if(strlen(rev) >= 0){
+    free(rev);
+  }
   return answer;
 }
