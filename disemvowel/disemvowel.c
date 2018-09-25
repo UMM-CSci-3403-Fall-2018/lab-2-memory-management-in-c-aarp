@@ -1,29 +1,50 @@
-#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 #include "disemvowel.h"
 
-char* disemvowel(char* string) {
+bool* isVowel(char letter){
+  letter = "aeiouAEIOU"
+  if(vowels){
+    return (bool*)true;
+  } else {
+    return (bool*)false;
+  }
+}
 
-  int i;
-  int j = 0;
-  int len = strlen(string);
-  int count = 0;
+char *disemvowel(char *str) {
+  int size;
+  int vowels, i, j;
+  char *result;
 
-  for(i = 0; i < len; ++i){
-    if(!(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' || string[i] == 'U')){
-      ++count;
+  size = strlen(str);
+
+  vowels = 0;
+  for(i=0; i<size; i++) {
+    if(isVowel(str[i])){
+      ++vowels;
     }
   }
 
-  char* noVow;
-  noVow = calloc(count + 1, sizeof(char));
+  if(vowels == 0){
+    return str;
+  }
 
-  for(i = 0; i < len; ++i){
-    if(!(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' || string[i] == 'U')){
-      noVow[j] = string[i];
+  if(vowels >= size){
+    return (char*) "";
+  }
+
+  result = (char*) calloc(size-vowels+1, sizeof(char));
+
+  j=0;
+  for(i=0; i<size; i++) {
+    if(!isVowel(str[i])){
+      result[j]=str[i];
       ++j;
     }
-   }
+  }
+  result[j]='\0';
 
-  return noVow;
+  return result;
 }
