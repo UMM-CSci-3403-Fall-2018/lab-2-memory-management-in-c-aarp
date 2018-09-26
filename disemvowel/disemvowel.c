@@ -30,9 +30,9 @@ char *disemvowel(char *str) {
     return str;
   }
 
-  //if(vowels == size){
-    //return (char*) "";
-  //}
+  if(vowels >= size){
+    return (char*) "";
+  }
 
   result = (char*) calloc(size-vowels+1, sizeof(char));
 
