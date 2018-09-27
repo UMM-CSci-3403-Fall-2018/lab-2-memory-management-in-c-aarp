@@ -2,16 +2,23 @@
 
 #include "disemvowel.h"
 
-TEST(Disemvowel, HandleEmptyString) {
-  char *result = disemvowel((char*) "");
-  ASSERT_STREQ("", result);
-  free(result);
+void test_disemvowel(char const *base, char const *expected_result) {
+  char *result;
+  result = disemvowel(base)
+  ASSERT_STREQ(result, expected_result);
+  if(strlen(result) >= 0){
+    free(result);
+  }
 }
 
+// TEST(Disemvowel, HandleEmptyString) {
+//   char *result = disemvowel((char*) "");
+//   ASSERT_STREQ("", result);
+//   free(result);
+// }
+
 TEST(Disemvowel, HandleNoVowels) {
-  char *result = disemvowel((char*) "pqrst");
-  ASSERT_STREQ("pqrst", result);
-  free(result);
+  test_disemvowel("pqrst","pqrst");
 }
 
 TEST(Disemvowel, HandleOnlyVowels) {
