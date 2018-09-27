@@ -2,6 +2,13 @@
 
 #include "disemvowel.h"
 
+/*
+This testing method was built to simplify the testing of simple string comparisons.
+ - Takes a pre-calculated char *string pair
+ - Call disemvowel on the first
+ - ASSERT the strings are equal
+ - Smart-clean *result as needed
+*/
 void test_disemvowel(char *base, char const *expected_result) {
   char *result;
   result = disemvowel(base);
@@ -11,6 +18,7 @@ void test_disemvowel(char *base, char const *expected_result) {
   }
 }
 
+//Notice how each individual test is now just a call to test_disemvowel
 TEST(Disemvowel, HandleEmptyString) {
   test_disemvowel((char*)"","");
 }
@@ -31,6 +39,12 @@ TEST(Disemvowel, HandlePunctuation) {
   test_disemvowel((char*)"An (Unexplained) Elephant!","n (nxplnd) lphnt!");
 }
 
+//Look how easy it is to make new tests!
+TEST(Disemvowel, HandleLiamKoehler) {
+  test_disemvowel((char*)"Liam Koehler","Lm Khlr");
+}
+
+//Notice that the original tests structure still works as intended.
 TEST(Disemvowel, HandleLongString) {
   char *str;
   int size;
