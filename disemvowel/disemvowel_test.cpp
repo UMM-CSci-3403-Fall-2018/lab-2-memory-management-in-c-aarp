@@ -6,7 +6,7 @@ void test_disemvowel(char *base, char const *expected_result) {
   char *result;
   result = disemvowel(base);
   ASSERT_STREQ(result, expected_result);
-  if(strlen(result) != 0){
+  if(result){
     free(result);
   }
 }
