@@ -9,7 +9,7 @@ TEST(Disemvowel, HandleEmptyString) {
 }
 
 TEST(Disemvowel, HandleNoVowels) {
-  char *result = disemvowel((char*) "pqrst");d
+  char *result = disemvowel((char*) "pqrst");
   ASSERT_STREQ("pqrst", result);
   free(result);
 }
